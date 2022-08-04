@@ -24,6 +24,7 @@
 
 /bin
 .metadata/
+Servers
 bin/
 tmp/
 *.tmp
@@ -77,3 +78,5 @@ CVS/
 **/CVS/*
 .cvsignore
 */.cvsignore
+
+
