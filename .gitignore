@@ -24,7 +24,7 @@
 
 /bin
 .metadata/
-Servers
+Servers/
 bin/
 tmp/
 *.tmp
