@@ -78,4 +78,6 @@ CVS/
 .cvsignore
 */.cvsignore
 
+#Folders
+/Servers/
 
