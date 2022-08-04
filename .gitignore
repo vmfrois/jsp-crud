@@ -24,13 +24,6 @@
 
 /bin
 .metadata/
-<<<<<<< HEAD
-!/Servers/
-!/Servers/Tomcat v9.0 Server at localhost-config/
-=======
-Servers/
-/Servers/Tomcat v9.0 Server at localhost-config/
->>>>>>> 4360a0dd560d8c8254e5ddf173d2862838c646a3
 bin/
 tmp/
 *.tmp
