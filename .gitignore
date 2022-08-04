@@ -25,6 +25,7 @@
 /bin
 .metadata/
 Servers/
+/Servers/Tomcat v9.0 Server at localhost-config/
 bin/
 tmp/
 *.tmp
