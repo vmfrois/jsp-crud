@@ -1,8 +1,10 @@
 package manager.servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,23 +21,40 @@ public class ServletNewCompany extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException,IOException{
 		
-		System.out.println("Add new company");
+		//Get parameters
+		String nameCompany = request.getParameter("name");
+		String date = request.getParameter("date");
+		
+		
+		//Set date formating
+		Date dateCreated = null;
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			dateCreated = sdf.parse(date);
+		}catch(ParseException e) {		
+			throw new ServletException(e);
+		}
 		
 		//Add company
-		String nameCompany = request.getParameter("name");
-		Company comp = new Company();
-		comp.setName(nameCompany);
+		Company company = new Company();
+		company.setName(nameCompany);
+		company.setDateCreated(dateCreated);
 		
 		//Save in Fake database
 		FakeDatabase fd = new FakeDatabase();
-		fd.add(comp);
-		
-		// Send to JSP
-		RequestDispatcher rd = request.getRequestDispatcher("/newCompany.jsp"); //where to send
-		request.setAttribute("company", comp.getName());
-		rd.forward(request, response); // Send to JSP
+		fd.add(company);
 		
 		
+		//Send to JSP - redirect to client side
+		request.setAttribute("company", company.getName());
+		
+		response.sendRedirect("listServlet");
+		
+		// Send to JSP - redirect  to server side
+		//RequestDispatcher rd = request.getRequestDispatcher("/listServlet"); //where to send
+		//request.setAttribute("company", company.getName());
+		//.forward(request, response); // Send to JSP
+
 	}
 	
 }
